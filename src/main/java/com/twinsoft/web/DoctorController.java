@@ -12,33 +12,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.twinsoft.domain.Patient;
-import com.twinsoft.service.patient.PatientService;
+import com.twinsoft.domain.Doctor;
+import com.twinsoft.service.doctor.DoctorService;
 
 /**
  * @author miodrag
  *
  */
 @RestController
-@RequestMapping("/api/patients")
-public class PatientController {
+@RequestMapping("/api/doctors")
+public class DoctorController {
 	
 	@Autowired
-	private PatientService patientService;
+	private DoctorService DoctorService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public Page<Patient> getPatients(Pageable pageable) {
-		return this.patientService.findAll(pageable);
+	public Page<Doctor> getDoctors(Pageable pageable) {
+		return this.DoctorService.findAll(pageable);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "{id}")
 	public void delete(@PathVariable String id) {
-		this.patientService.deletePatient(id);
+		this.DoctorService.deleteDoctor(id);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public Patient create(@RequestBody Patient patient) {
-	    return this.patientService.save(patient);
+	public Doctor create(@RequestBody Doctor Doctor) {
+	    return this.DoctorService.save(Doctor);
 	}
 
 }

@@ -14,7 +14,7 @@ import lombok.Data;
 @Entity
 @Data
 @AllArgsConstructor
-public class Patient implements Serializable {
+public class Doctor implements Serializable {
 
 	/**
 	 * 
@@ -32,6 +32,12 @@ public class Patient implements Serializable {
 	@Column
 	private String middlename;
 	@Column(nullable = false)
+	private String degreeyear;
+	@Column(nullable = false)
+	private String degreeplace;
+	@Column
+	private String title;
+	@Column(nullable = false)
 	private String gender;
 	@Column(nullable = false)
 	private String address;
@@ -47,15 +53,10 @@ public class Patient implements Serializable {
 	private String mobilephone;
 	@Column
 	private String photo;
-	@Column
-	private String allergies;
-	@Column
-	private String notes;
-	
-	protected Patient() {		
+	protected Doctor() {		
 	}
 	
-	public Patient(String firstname) {
+	public Doctor(String firstname) {
 		super();
 		this.firstname = firstname;
 	}

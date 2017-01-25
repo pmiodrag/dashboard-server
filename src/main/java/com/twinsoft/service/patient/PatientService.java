@@ -1,4 +1,4 @@
-package com.twinsoft.service;
+package com.twinsoft.service.patient;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
