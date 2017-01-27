@@ -8,8 +8,11 @@ import com.twinsoft.domain.Doctor;
 public interface DoctorService {
 
 	Page<Doctor> findAll(Pageable pageable);
-	Doctor getDoctor(String firstname);
-	Doctor save(Doctor Doctor);
-	void deleteDoctor(String id);
+	
+	Doctor getDoctor(final String firstname);
+	
+	Doctor save(final Doctor doctor);
+	
+	void deleteDoctor(final String id);
 
 }

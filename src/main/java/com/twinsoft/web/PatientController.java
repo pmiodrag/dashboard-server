@@ -27,17 +27,17 @@ public class PatientController {
 	private PatientService patientService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public Page<Patient> getPatients(Pageable pageable) {
+	public Page<Patient> getPatients(final Pageable pageable) {
 		return this.patientService.findAll(pageable);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "{id}")
-	public void delete(@PathVariable String id) {
+	public void delete(@PathVariable final String id) {
 		this.patientService.deletePatient(id);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public Patient create(@RequestBody Patient patient) {
+	public Patient create(@RequestBody final Patient patient) {
 	    return this.patientService.save(patient);
 	}
 

@@ -12,30 +12,30 @@ import com.twinsoft.domain.Diagnose;
 @Transactional
 public class DiagnoseServiceImpl implements DiagnoseService {
 
-	private final DiagnoseRepository DiagnoseRepository;
+	private final DiagnoseRepository diagnoseRepository;
 	
-	public DiagnoseServiceImpl(final DiagnoseRepository DiagnoseRepository) {
-		this.DiagnoseRepository = DiagnoseRepository;
+	public DiagnoseServiceImpl(final DiagnoseRepository diagnoseRepository) {
+		this.diagnoseRepository = diagnoseRepository;
 	}
 	
 	@Override
-	public Diagnose getDiagnose(String name) {
-		return this.DiagnoseRepository.findByNameIgnoringCase(name);
+	public Diagnose getDiagnose(final String name) {
+		return this.diagnoseRepository.findByNameIgnoringCase(name);
 	}
 
 	@Override
-	public Page<Diagnose> findAll(Pageable pageable) {
-		return this.DiagnoseRepository.findAll(pageable);
+	public Page<Diagnose> findAll(final Pageable pageable) {
+		return this.diagnoseRepository.findAll(pageable);
 	}
 
 	@Override
-	public void deleteDiagnose(String id) {
-		this.DiagnoseRepository.delete(Long.parseLong(id));		
+	public void deleteDiagnose(final String id) {
+		this.diagnoseRepository.delete(Long.parseLong(id));		
 	}
 
 	@Override
-	public Diagnose save(Diagnose Diagnose) {
-		return this.DiagnoseRepository.save(Diagnose);
+	public Diagnose save(final Diagnose diagnose) {
+		return this.diagnoseRepository.save(diagnose);
 	}
 
 }

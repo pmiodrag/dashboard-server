@@ -8,59 +8,56 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 public class Patient implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 3451665468746321533L;
+
 	@Id
 	@GeneratedValue
 	private Long id;
 
 	@Column(nullable = false)
 	private String firstname;	
+	
 	@Column(nullable = false)
 	private String lastname;
+	
 	@Column
 	private String middlename;
+	
 	@Column(nullable = false)
 	private String gender;
+	
 	@Column(nullable = false)
 	private String address;
+	
 	@Column(nullable = false)
 	private String place;    
+	
 	@Column(nullable = false)
 	private Date birthdate;
+	
 	@Column(nullable = false, unique = true)
 	private String email;
+	
 	@Column(nullable = false)
 	private String phone;
+	
 	@Column(nullable = false)
 	private String mobilephone;
+	
 	@Column
 	private String photo;
+	
 	@Column
 	private String allergies;
+	
 	@Column
 	private String notes;
-	
-	protected Patient() {		
-	}
-	
-	public Patient(String firstname) {
-		super();
-		this.firstname = firstname;
-	}
-
-
-
-
 }

@@ -7,6 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 import com.twinsoft.domain.Diagnose;
 
 interface DiagnoseRepository extends CrudRepository<Diagnose, Long> {
-	Page<Diagnose> findAll(Pageable pageable);
-	Diagnose findByNameIgnoringCase(String name);
+	
+	Page<Diagnose> findAll(final Pageable pageable);
+	
+	Diagnose findByNameIgnoringCase(final String name);
 }

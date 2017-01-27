@@ -7,9 +7,12 @@ import com.twinsoft.domain.Patient;
 
 public interface PatientService {
 
-	Page<Patient> findAll(Pageable pageable);
-	Patient getPatient(String firstname);
-	Patient save(Patient patient);
-	void deletePatient(String id);
+	Page<Patient> findAll(final Pageable pageable);
+	
+	Patient getPatient(final String firstname);
+	
+	Patient save(final Patient patient);
+	
+	void deletePatient(final String id);
 
 }

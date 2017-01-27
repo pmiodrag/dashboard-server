@@ -7,7 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 import com.twinsoft.domain.Patient;
 
 interface PatientRepository extends CrudRepository<Patient, Long> {
-	Page<Patient> findAll(Pageable pageable);
-	Patient findByFirstnameIgnoringCase(String firstname);
-//    void delete(String id);
+	
+	Page<Patient> findAll(final Pageable pageable);
+	
+	Patient findByFirstnameIgnoringCase(final String firstname);
 }

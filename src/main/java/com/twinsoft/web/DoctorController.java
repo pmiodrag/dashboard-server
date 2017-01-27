@@ -24,21 +24,21 @@ import com.twinsoft.service.doctor.DoctorService;
 public class DoctorController {
 	
 	@Autowired
-	private DoctorService DoctorService;
+	private DoctorService doctorService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public Page<Doctor> getDoctors(Pageable pageable) {
-		return this.DoctorService.findAll(pageable);
+	public Page<Doctor> getDoctors(final Pageable pageable) {
+		return this.doctorService.findAll(pageable);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "{id}")
-	public void delete(@PathVariable String id) {
-		this.DoctorService.deleteDoctor(id);
+	public void delete(@PathVariable final String id) {
+		this.doctorService.deleteDoctor(id);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public Doctor create(@RequestBody Doctor Doctor) {
-	    return this.DoctorService.save(Doctor);
+	public Doctor create(@RequestBody final Doctor doctor) {
+	    return this.doctorService.save(doctor);
 	}
 
 }

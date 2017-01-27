@@ -7,9 +7,12 @@ import com.twinsoft.domain.Diagnose;
 
 public interface DiagnoseService {
 
-	Page<Diagnose> findAll(Pageable pageable);
-	Diagnose getDiagnose(String name);
-	Diagnose save(Diagnose Diagnose);
-	void deleteDiagnose(String id);
+	Page<Diagnose> findAll(final Pageable pageable);
+	
+	Diagnose getDiagnose(final String name);
+	
+	Diagnose save(final Diagnose diagnose);
+	
+	void deleteDiagnose(final String id);
 
 }

@@ -24,21 +24,21 @@ import com.twinsoft.service.diagnose.DiagnoseService;
 public class DiagnoseController {
 	
 	@Autowired
-	private DiagnoseService DiagnoseService;
+	private DiagnoseService diagnoseService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public Page<Diagnose> getDiagnoses(Pageable pageable) {
-		return this.DiagnoseService.findAll(pageable);
+	public Page<Diagnose> getDiagnoses(final Pageable pageable) {
+		return this.diagnoseService.findAll(pageable);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "{id}")
-	public void delete(@PathVariable String id) {
-		this.DiagnoseService.deleteDiagnose(id);
+	public void delete(@PathVariable final String id) {
+		this.diagnoseService.deleteDiagnose(id);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public Diagnose create(@RequestBody Diagnose Diagnose) {
-	    return this.DiagnoseService.save(Diagnose);
+	public Diagnose create(@RequestBody final Diagnose diagnose) {
+	    return this.diagnoseService.save(diagnose);
 	}
 
 }

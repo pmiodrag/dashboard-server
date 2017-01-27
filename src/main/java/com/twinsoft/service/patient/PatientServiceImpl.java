@@ -19,22 +19,22 @@ public class PatientServiceImpl implements PatientService {
 	}
 	
 	@Override
-	public Patient getPatient(String firstname) {
+	public Patient getPatient(final String firstname) {
 		return this.patientRepository.findByFirstnameIgnoringCase(firstname);
 	}
 
 	@Override
-	public Page<Patient> findAll(Pageable pageable) {
+	public Page<Patient> findAll(final Pageable pageable) {
 		return this.patientRepository.findAll(pageable);
 	}
 
 	@Override
-	public void deletePatient(String id) {
+	public void deletePatient(final String id) {
 		this.patientRepository.delete(Long.parseLong(id));		
 	}
 
 	@Override
-	public Patient save(Patient patient) {
+	public Patient save(final Patient patient) {
 		return this.patientRepository.save(patient);
 	}
 

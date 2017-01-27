@@ -12,30 +12,30 @@ import com.twinsoft.domain.Doctor;
 @Transactional
 public class DoctorServiceImpl implements DoctorService {
 
-	private final DoctorRepository DoctorRepository;
+	private final DoctorRepository doctorRepository;
 	
-	public DoctorServiceImpl(final DoctorRepository DoctorRepository) {
-		this.DoctorRepository = DoctorRepository;
+	public DoctorServiceImpl(final DoctorRepository doctorRepository) {
+		this.doctorRepository = doctorRepository;
 	}
 	
 	@Override
-	public Doctor getDoctor(String firstname) {
-		return this.DoctorRepository.findByFirstnameIgnoringCase(firstname);
+	public Doctor getDoctor(final String firstname) {
+		return this.doctorRepository.findByFirstnameIgnoringCase(firstname);
 	}
 
 	@Override
-	public Page<Doctor> findAll(Pageable pageable) {
-		return this.DoctorRepository.findAll(pageable);
+	public Page<Doctor> findAll(final Pageable pageable) {
+		return this.doctorRepository.findAll(pageable);
 	}
 
 	@Override
-	public void deleteDoctor(String id) {
-		this.DoctorRepository.delete(Long.parseLong(id));		
+	public void deleteDoctor(final String id) {
+		this.doctorRepository.delete(Long.parseLong(id));		
 	}
 
 	@Override
-	public Doctor save(Doctor Doctor) {
-		return this.DoctorRepository.save(Doctor);
+	public Doctor save(final Doctor doctor) {
+		return this.doctorRepository.save(doctor);
 	}
 
 }
