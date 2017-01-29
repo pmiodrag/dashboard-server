@@ -2,18 +2,29 @@ package com.twinsoft.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
+@EqualsAndHashCode( of = { "firstname", "lastname" })
 public class Patient implements Serializable {
 
 	private static final long serialVersionUID = 3451665468746321533L;
@@ -60,4 +71,8 @@ public class Patient implements Serializable {
 	
 	@Column
 	private String notes;
+	
+    @OneToMany(mappedBy = "patient", cascade = { CascadeType.MERGE, CascadeType.PERSIST }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonManagedReference(value = "patient_treatments")
+    private Set<Treatment> treatments = new HashSet<>();
 }
