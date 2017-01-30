@@ -12,6 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -46,5 +50,12 @@ public class Treatment implements Serializable {
     @JoinColumn(name = "patientid")
     @JsonBackReference(value = "patient_treatments")
     private Patient patient;
+    
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "diagnose")
+    @JsonManagedReference(value = "diagnose_treatments")
+    @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+    @JsonIdentityReference(alwaysAsId=true)
+    private Diagnose diagnose;
 	
 }
