@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -37,7 +38,6 @@ public class Diagnose implements Serializable {
 	private String description;
 	
     @OneToMany(mappedBy = "diagnose")
-	@JsonBackReference(value = "patient_treatments") 
-    @JsonProperty(access = Access.READ_ONLY)
+    @JsonIdentityReference(alwaysAsId=true)	
     private Set<Treatment> treatments = new HashSet<>();
 }

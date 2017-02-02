@@ -27,7 +27,7 @@ import lombok.ToString;
 @Entity
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode( of = { "price", "treatmentDate" })
+@EqualsAndHashCode( of = { "price", "treatmentdate" })
 @ToString(exclude = {"doctor", "patient"})
 public class Treatment implements Serializable {
 
@@ -46,16 +46,22 @@ public class Treatment implements Serializable {
 	@Column(name = "treatmentdate", nullable = false)
 	private Date treatmentdate;
 	
-    @ManyToOne(optional = false)
+	private Long patientid;
+	
+	private Long doctorid;
+	
+	private Long diagnose;
+	
+    /*@ManyToOne(optional = false)
     @JoinColumn(name = "doctorid")
     @JsonBackReference(value = "doctor_treatments")
-    @JsonProperty(access = Access.READ_ONLY)
+   // @JsonProperty(access = Access.READ_ONLY)
     private Doctor doctor;
     
     @ManyToOne(optional = false)
     @JoinColumn(name = "patientid")
     @JsonBackReference(value = "patient_treatments")
-    @JsonProperty(access = Access.READ_ONLY)
+   // @JsonProperty(access = Access.READ_ONLY)
     private Patient patient;
     
     @ManyToOne(optional = false)
@@ -63,7 +69,7 @@ public class Treatment implements Serializable {
     @JsonManagedReference(value = "diagnose_treatments")
     @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
     @JsonIdentityReference(alwaysAsId=true)
-    @JsonProperty(access = Access.READ_ONLY)
-    private Diagnose diagnose;
+  //  @JsonProperty(access = Access.READ_ONLY)
+    private Diagnose diagnose;*/
 	
 }
