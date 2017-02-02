@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,5 +38,6 @@ public class Diagnose implements Serializable {
 	
     @OneToMany(mappedBy = "diagnose")
 	@JsonBackReference(value = "patient_treatments") 
+    @JsonProperty(access = Access.READ_ONLY)
     private Set<Treatment> treatments = new HashSet<>();
 }

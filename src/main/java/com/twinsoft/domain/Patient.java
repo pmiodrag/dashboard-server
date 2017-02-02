@@ -75,9 +75,9 @@ public class Patient implements Serializable {
 	@Column
 	private String notes;
 	
-    @OneToMany(mappedBy = "patient", cascade = { CascadeType.MERGE, CascadeType.PERSIST }, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JsonManagedReference(value = "patient_treatments")
-    @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
-    @JsonIdentityReference(alwaysAsId=true)
-    private Set<Treatment> treatments = new HashSet<>();
+//    @OneToMany(mappedBy = "patient", cascade = { CascadeType.MERGE, CascadeType.PERSIST }, orphanRemoval = true, fetch = FetchType.EAGER)
+//    @JsonManagedReference(value = "patient_treatments")
+////    @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+////    @JsonIdentityReference(alwaysAsId=true)
+//    private Set<Treatment> treatments = new HashSet<>();
 }

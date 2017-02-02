@@ -15,6 +15,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Data;
@@ -34,21 +36,26 @@ public class Treatment implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;
-
+	
+	@Column(nullable = false)
+	private String therapy;	
+	
 	@Column(nullable = false)
 	private BigDecimal price;
 	
 	@Column(name = "treatmentdate", nullable = false)
-	private Date treatmentDate;
+	private Date treatmentdate;
 	
     @ManyToOne(optional = false)
     @JoinColumn(name = "doctorid")
     @JsonBackReference(value = "doctor_treatments")
+    @JsonProperty(access = Access.READ_ONLY)
     private Doctor doctor;
     
     @ManyToOne(optional = false)
     @JoinColumn(name = "patientid")
     @JsonBackReference(value = "patient_treatments")
+    @JsonProperty(access = Access.READ_ONLY)
     private Patient patient;
     
     @ManyToOne(optional = false)
@@ -56,6 +63,7 @@ public class Treatment implements Serializable {
     @JsonManagedReference(value = "diagnose_treatments")
     @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
     @JsonIdentityReference(alwaysAsId=true)
+    @JsonProperty(access = Access.READ_ONLY)
     private Diagnose diagnose;
 	
 }
