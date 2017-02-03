@@ -46,11 +46,14 @@ public class Treatment implements Serializable {
 	@Column(name = "treatmentdate", nullable = false)
 	private Date treatmentdate;
 	
+	@Column(nullable = false)
 	private Long patientid;
 	
+	@Column(nullable = false)
 	private Long doctorid;
 	
-	private Long diagnose;
+	@Column(nullable = false)
+	private String diagnose;
 	
     /*@ManyToOne(optional = false)
     @JoinColumn(name = "doctorid")
