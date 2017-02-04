@@ -28,7 +28,7 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode( of = { "price", "treatmentdate" })
-@ToString(exclude = {"doctor", "patient"})
+@ToString(exclude = {"doctorid", "patientid", "diagnoseid"})
 public class Treatment implements Serializable {
 
 	private static final long serialVersionUID = -662611264417102369L;
@@ -53,7 +53,7 @@ public class Treatment implements Serializable {
 	private Long doctorid;
 	
 	@Column(nullable = false)
-	private String diagnose;
+	private Long diagnoseid;
 	
     /*@ManyToOne(optional = false)
     @JoinColumn(name = "doctorid")

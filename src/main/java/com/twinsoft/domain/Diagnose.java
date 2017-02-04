@@ -37,7 +37,7 @@ public class Diagnose implements Serializable {
 	@Column
 	private String description;
 	
-    @OneToMany(mappedBy = "diagnose")
+    @OneToMany(mappedBy = "diagnoseid")
     @JsonIdentityReference(alwaysAsId=true)	
     private Set<Treatment> treatments = new HashSet<>();
 }
