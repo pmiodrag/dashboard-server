@@ -24,6 +24,11 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
+	public Patient getPatientById(String id) {
+		return this.patientRepository.findById(id);
+	}
+	
+	@Override
 	public Page<Patient> findAll(Pageable pageable) {
 		return this.patientRepository.findAll(pageable);
 	}

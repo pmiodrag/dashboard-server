@@ -9,5 +9,5 @@ import com.twinsoft.domain.Patient;
 interface PatientRepository extends CrudRepository<Patient, Long> {
 	Page<Patient> findAll(Pageable pageable);
 	Patient findByFirstnameIgnoringCase(String firstname);
-//    void delete(String id);
+	Patient findById(String id);
 }

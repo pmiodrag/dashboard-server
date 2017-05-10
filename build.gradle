@@ -1,30 +1,42 @@
 buildscript {
-	ext {
-		springBootVersion = '1.4.2.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+    }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
+
+war {
+    baseName = 'dashboard'
+    version =  '0.5.0'
+}
 
 jar {
-	baseName = 'dashboard-server'
-	version = '0.0.1-SNAPSHOT'
+    baseName = 'dashboard'
+    version = '0.1.0'
 }
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+bootRun {
+    if ( project.hasProperty('jvmArgs') ) {
+        jvmArgs = (project.jvmArgs.split("\\s+") as List)
+    }
+}
+springBoot {
+    mainClass = "com.twinsoft.DashboardServerApplication"
+}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
@@ -32,4 +44,7 @@ dependencies {
 	compile('org.projectlombok:lombok:1.16.12')
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 }
+
+

@@ -12,33 +12,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.twinsoft.domain.Diagnose;
-import com.twinsoft.service.diagnose.DiagnoseService;
+import com.twinsoft.domain.Patient;
+import com.twinsoft.domain.Treatment;
+import com.twinsoft.service.patient.PatientService;
+import com.twinsoft.service.treatment.TreatmentService;
 
 /**
  * @author miodrag
  *
  */
 @RestController
-@RequestMapping("/api/diagnoses")
-public class DiagnoseController {
+@RequestMapping("/api/treatments")
+public class TreatmentController {
 	
 	@Autowired
-	private DiagnoseService diagnoseService;
+	private TreatmentService treatmentService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public Page<Diagnose> getDiagnoses(Pageable pageable) {
-		return this.diagnoseService.findAll(pageable);
+	public Page<Treatment> getTreatments(Pageable pageable) {
+		return this.treatmentService.findAll(pageable);
 	}
-				
+
 	@RequestMapping(method = RequestMethod.DELETE, value = "{id}")
 	public void delete(@PathVariable String id) {
-		this.diagnoseService.deleteDiagnose(id);
+		this.treatmentService.deleteTreatment(id);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public Diagnose create(@RequestBody Diagnose Diagnose) {
-	    return this.diagnoseService.save(Diagnose);
+	public Treatment create(@RequestBody Treatment treatment) {
+	    return this.treatmentService.save(treatment);
 	}
 
 }

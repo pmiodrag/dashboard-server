@@ -30,6 +30,7 @@ public class PatientController {
 	public Page<Patient> getPatients(Pageable pageable) {
 		return this.patientService.findAll(pageable);
 	}
+		
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "{id}")
 	public void delete(@PathVariable String id) {
