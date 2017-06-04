@@ -3,6 +3,8 @@
  */
 package com.twinsoft.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.twinsoft.domain.Patient;
 import com.twinsoft.domain.Treatment;
+import com.twinsoft.domain.TreatmentDTO;
 import com.twinsoft.service.patient.PatientService;
 import com.twinsoft.service.treatment.TreatmentService;
 
@@ -31,6 +34,11 @@ public class TreatmentController {
 	@RequestMapping(method = RequestMethod.GET)
 	public Page<Treatment> getTreatments(Pageable pageable) {
 		return this.treatmentService.findAll(pageable);
+	}
+	
+	@RequestMapping(value="/patients",method = RequestMethod.GET)
+	public List<TreatmentDTO> getPatientTreatments(Pageable pageable) {
+		return this.treatmentService.findAllPatientTreatments();
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "{id}")
