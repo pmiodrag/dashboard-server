@@ -7,12 +7,8 @@ import com.twinsoft.domain.Treatment;
 
 public interface TreatmentService {
 
-	Page<Treatment> findAll(final Pageable pageable);
-	
-	Treatment getTreatment(final Long id);
-	
-	Treatment save(final Treatment treatment);
-	
-	void deleteTreatment(final String id);
+	Page<Treatment> findAll(Pageable pageable);
+	Treatment save(Treatment treatment);
+	void deleteTreatment(String id);
 
 }

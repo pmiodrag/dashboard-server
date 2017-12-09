@@ -6,36 +6,34 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
+import com.twinsoft.domain.Doctor;
 import com.twinsoft.domain.Treatment;
 
-@Component("TreatmentService")
+@Component("treatmentService")
 @Transactional
 public class TreatmentServiceImpl implements TreatmentService {
 
 	private final TreatmentRepository treatmentRepository;
 	
-	public TreatmentServiceImpl(final TreatmentRepository treatmentRepository) {
-		this.treatmentRepository = treatmentRepository;
-	}
-	
-	@Override
-	public Treatment getTreatment(final Long id) {
-		return this.treatmentRepository.findById(id);
+	public TreatmentServiceImpl(final TreatmentRepository TreatmentRepository) {
+		this.treatmentRepository = TreatmentRepository;
 	}
 
 	@Override
-	public Page<Treatment> findAll(final Pageable pageable) {
+	public Page<Treatment> findAll(Pageable pageable) {
 		return this.treatmentRepository.findAll(pageable);
 	}
 
 	@Override
-	public void deleteTreatment(final String id) {
-		this.treatmentRepository.delete(Long.parseLong(id));		
+	public Treatment save(Treatment treatment) {
+		return this.treatmentRepository.save(treatment);
 	}
 
 	@Override
-	public Treatment save(final Treatment treatment) {
-		return this.treatmentRepository.save(treatment);
+	public void deleteTreatment(String id) {
+		this.treatmentRepository.delete(Long.parseLong(id));
+		
 	}
+	
 
 }

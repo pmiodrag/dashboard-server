@@ -7,8 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import com.twinsoft.domain.Treatment;
 
 interface TreatmentRepository extends CrudRepository<Treatment, Long> {
-	
-	Page<Treatment> findAll(final Pageable pageable);
-	
-	Treatment findById(final Long id);
+	Page<Treatment> findAll(Pageable pageable);
+	Treatment findById(String id);
 }

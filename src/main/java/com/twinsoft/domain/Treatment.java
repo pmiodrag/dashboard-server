@@ -1,59 +1,46 @@
 package com.twinsoft.domain;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode( of = { "price", "treatmentdate" })
-@ToString(exclude = {"doctorid", "patientid", "diagnoseid"})
+@ToString(exclude = {"doctor", "patient"})
 public class Treatment implements Serializable {
 
-	private static final long serialVersionUID = -662611264417102369L;
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	@Column(nullable = false)
-	private String therapy;	
-	
-	@Column(nullable = false)
-	private BigDecimal price;
-	
-	@Column(name = "treatmentdate", nullable = false)
-	private Date treatmentdate;
-	
+
 	@Column(nullable = false)
 	private Long patientid;
-	
 	@Column(nullable = false)
-	private Long doctorid;
-	
+	private Long doctorid; 
+	@Column(nullable = false)
+	private Date treatmentdate;
+	@Column(nullable = false)
+	private String therapy;
 	@Column(nullable = false)
 	private Long diagnoseid;
+	@Column(nullable = false)
+	private String price;
+
+
 	
     /*@ManyToOne(optional = false)
     @JoinColumn(name = "doctorid")
@@ -74,5 +61,6 @@ public class Treatment implements Serializable {
     @JsonIdentityReference(alwaysAsId=true)
   //  @JsonProperty(access = Access.READ_ONLY)
     private Diagnose diagnose;*/
+
 	
 }
